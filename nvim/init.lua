@@ -92,6 +92,106 @@ require('packer').startup(function(use)
     use 'andweeb/presence.nvim'
 
     use {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("project_nvim").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
+
+    -- Dashboard
+    use {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      local db = require('dashboard')
+      db.setup {
+        theme="doom",
+        config={
+            -- config
+            --vim.g.dashboard_default_executive = 'telescope'
+              header={
+                [[                                                                 ]],
+                [[                                                                 ]],
+                [[                                                                 ]],
+                [[                                                                 ]],
+                [[                                                                   ]],
+                [[                          .@@@@@@@@@@@@@@@@@@@@@@@@@@@+            ]],
+                [[                                        ..                         ]],
+                [[                :@#                    .@%                         ]],
+                [[                -@@                    :@@                         ]],
+                [[                -@%                    :@@                         ]],
+                [[                -@%              .=+.  :@@                         ]],
+                [[                -@%            :*@@+   :@@                         ]],
+                [[                =@%          =%@#-     :@@                         ]],
+                [[                =@%       :+@@*:       -@@                         ]],
+                [[                =@%     -#@%=          -@@                         ]],
+                [[                =@%  .+@@#:            -@@                         ]],
+                [[                =@%:*@@+.              -@@                         ]],
+                [[                =@@@#-                 -@@                         ]],
+                [[                =@%:                   -@@                         ]],
+                [[                =@#                    -@@                         ]],
+                [[                =@#  -%*:              -@@                         ]],
+                [[                +@#   =#@%+.           -@%                         ]],
+                [[                +@#     .+%@#-         -@%                         ]],
+                [[                +@#        :*@@*:      -@%                         ]],
+                [[                +@#           =#@%=.   =@%                         ]],
+                [[                +@#             .+@@#- =@%                         ]],
+                [[                +@#                -#@@%@%                         ]],
+                [[                +@*                  .=%@#                         ]],
+                [[                 .                      .                          ]],
+                [[                                                                 ]],
+                [[                                                                 ]],
+                [[                                                                 ]],
+                [[                                                                 ]],
+                [[                                                                 ]]
+            },
+            center = {
+            {
+              icon='   ',
+              desc='Recent Files                    ',
+              desc_hl='String',
+              key='r',
+              action='Telescope oldfiles'
+            },
+            {
+              icon='   ',
+              desc='Recent Projects                    ',
+              desc_hl='String',
+              key='p',
+              action='Telescope projects'
+            },
+            {
+              icon='   ',
+              desc='Find File                       ',
+              desc_hl='String',
+              key='f',
+              action='Telescope find_files'
+            },
+            {
+              icon='   ',
+              desc='Config File                     ',
+              desc_hl='String',
+              key='c',
+              action='edit ~/.config/nvim/init.lua'
+            },
+            -- p = {description = {'  Recent Projects           telescope.builtin.oldfiles()'}, command = 'telescope.builtin.oldfiles()'},
+            -- r = {description = {'  Recent Files                  [SPC] [s] [r]'}, command = 'Telescope oldfiles'},
+            -- f = {description = {'  Find File                     [SPC] [s] [f]'}, command = 'Telescope find_files'},
+            -- s = {description = {'  Search Text                   Telescope live_grep'}, command = 'Telescope live_grep'},
+            -- c = {description = {'  Config                        edit ~/.config/nvim/init.lua'}, command = 'edit ~/.config/nvim/init.lua'},
+            },
+            footer = {'v0.1 - KJvim'},
+        }
+      }
+    end,
+    requires = {'nvim-tree/nvim-web-devicons'},
+    }
+  
+    use {
       "folke/which-key.nvim",
       config = function()
         vim.o.timeout = true
@@ -251,6 +351,7 @@ require('telescope').setup {
     },
   },
 }
+require('telescope').load_extension('projects')
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -585,3 +686,7 @@ require('leap').add_default_mappings()
 
 -- CUSTOM
 vim.opt.colorcolumn = "80"
+
+-- Dashboard
+
+
