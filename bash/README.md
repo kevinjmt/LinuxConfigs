@@ -5,7 +5,9 @@
 ✨ **The pixel perfect config for your Bash !** ✨
 
 ---
-#
+
+<br>
+
 # 📥 | Installation
 
 Download my config in the releases:
@@ -32,7 +34,8 @@ Your Bash config is now ready.
 #
 
 
-#
+<br>
+
 ## ✅ Your Bash config is installed and ready to run
-#
-#
+
+<br>
